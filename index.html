@@ -68,39 +68,67 @@
         }
         .cert-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:25px;
     margin-top:20px;
 }
 
 .cert-item{
     background:#0f172a;
-    border-radius:15px;
+    border-radius:16px;
     overflow:hidden;
-    transition:0.3s;
     border:1px solid #334155;
+    transition:0.3s;
+    display:flex;
+    flex-direction:column;
 }
 
 .cert-item:hover{
-    transform:translateY(-5px);
+    transform:translateY(-6px);
     border-color:#38bdf8;
+    box-shadow:0 0 20px rgba(56,189,248,0.25);
 }
 
 .cert-item img{
     width:100%;
-    height:180px;
+    height:260px;
     object-fit:cover;
+    background:#111827;
 }
 
-.cert-item h3{
-    padding:15px 15px 5px;
+.cert-content{
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    flex-grow:1;
 }
 
-.cert-item p{
-    padding:0 15px 20px;
+.cert-content h3{
+    margin:0;
+    margin-bottom:10px;
+}
+
+.cert-content p{
     color:#94a3b8;
+    margin-bottom:20px;
 }
-        
+
+.cert-content a{
+    margin-top:auto;
+    text-align:center;
+    padding:12px;
+    background:linear-gradient(135deg,#38bdf8,#0ea5e9);
+    color:white;
+    text-decoration:none;
+    border-radius:10px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.cert-content a:hover{
+    background:white;
+    color:black;
+}
     </style> 
 </head>
 
@@ -169,9 +197,6 @@
         </div>
     </section>
     <div class="card">
-    <h2>Certificates</h2>
-
-    <div class="card">
 
     <h2>Certificates</h2>
 
@@ -182,28 +207,36 @@
 
             <img src="Certificates/game_qa_imagecampus.png">
 
-            <h3>Game Quality Analyst</h3>
+            <div class="cert-content">
 
-            <p>Image Campus</p>
+                <h3>Game Quality Analyst</h3>
 
-            <a href="Certificates/game_qa_imagecampus.png" target="_blank">
-                View Certificate
-            </a>
+                <p>Image Campus</p>
+
+                <a href="Certificates/game_qa_imagecampus.png" target="_blank">
+                    View Certificate
+                </a>
+
+            </div>
 
         </div>
 
-        <!-- QA MANUAL CODERHOUSE -->
+        <!-- QA MANUAL -->
         <div class="cert-item">
 
             <img src="Certificates/qa_manual_coderhouse.jpg">
 
-            <h3>Testing QA Manual</h3>
+            <div class="cert-content">
 
-            <p>CoderHouse</p>
+                <h3>Testing QA Manual</h3>
 
-            <a href="Certificates/qa_manual_coderhouse.jpg" target="_blank">
-                View Certificate
-            </a>
+                <p>CoderHouse</p>
+
+                <a href="Certificates/qa_manual_coderhouse.jpg" target="_blank">
+                    View Certificate
+                </a>
+
+            </div>
 
         </div>
 
@@ -212,13 +245,17 @@
 
             <img src="Certificates/javascript.jpg">
 
-            <h3>JavaScript</h3>
+            <div class="cert-content">
 
-            <p>CoderHouse</p>
+                <h3>JavaScript</h3>
 
-            <a href="Certificates/javascript.jpg" target="_blank">
-                View Certificate
-            </a>
+                <p>CoderHouse</p>
+
+                <a href="Certificates/javascript.jpg" target="_blank">
+                    View Certificate
+                </a>
+
+            </div>
 
         </div>
 
@@ -227,88 +264,112 @@
 
             <img src="Certificates/excel_advanced.jpg">
 
-            <h3>Excel Advanced</h3>
+            <div class="cert-content">
 
-            <p>CoderHouse</p>
+                <h3>Excel Advanced</h3>
 
-            <a href="Certificates/excel_advanced.jpg" target="_blank">
-                View Certificate
-            </a>
+                <p>CoderHouse</p>
+
+                <a href="Certificates/excel_advanced.jpg" target="_blank">
+                    View Certificate
+                </a>
+
+            </div>
 
         </div>
 
-        <!-- QA MANUAL EDUCACIONIT -->
+        <!-- QA EDUCACIONIT -->
         <div class="cert-item">
 
-            <img src="Certificates/qa_manual_coderhouse.jpg">
+            <img src="Certificates/qa_manual_educacionit.jpeg">
 
-            <h3>Tester QA Manual</h3>
+            <div class="cert-content">
 
-            <p>EducaciónIT</p>
+                <h3>Tester QA Manual</h3>
 
-            <a href="Certificates/qa_manual_educacionit.pdf" target="_blank">
-                View Certificate
-            </a>
+                <p>EducaciónIT</p>
+
+                <a href="Certificates/qa_manual_educacionit.jpeg" target="_blank">
+                    View Certificate
+                </a>
+
+            </div>
 
         </div>
 
         <!-- TEST CASE DESIGN -->
         <div class="cert-item">
 
-            <img src="Certificates/qa_manual_coderhouse.jpg">
+            <img src="Certificates/test_case_design_educacionit.jpeg">
 
-            <h3>Test Case Design</h3>
+            <div class="cert-content">
 
-            <p>EducaciónIT</p>
+                <h3>Test Case Design</h3>
 
-            <a href="Certificates/test_case_design_educacionit.pdf" target="_blank">
-                View Certificate
-            </a>
+                <p>EducaciónIT</p>
+
+                <a href="Certificates/test_case_design_educacionit.jpeg" target="_blank">
+                    View Certificate
+                </a>
+
+            </div>
 
         </div>
 
         <!-- JAVA -->
         <div class="cert-item">
 
-            <img src="Certificates/javascript.jpg">
+            <img src="Certificates/java_intro_educacionit.jpeg">
 
-            <h3>Introduction to Java</h3>
+            <div class="cert-content">
 
-            <p>EducaciónIT</p>
+                <h3>Introduction to Java</h3>
 
-            <a href="Certificates/java_introo_educacionit.pdf" target="_blank">
-                View Certificate
-            </a>
+                <p>EducaciónIT</p>
+
+                <a href="Certificates/java_intro_educacionit.jpeg" target="_blank">
+                    View Certificate
+                </a>
+
+            </div>
 
         </div>
 
         <!-- OOP -->
         <div class="cert-item">
 
-            <img src="Certificates/javascript.jpg">
+            <img src="Certificates/oop_ai_educacionit.jpeg">
 
-            <h3>OOP with AI</h3>
+            <div class="cert-content">
 
-            <p>EducaciónIT</p>
+                <h3>OOP with AI</h3>
 
-            <a href="Certificates/oop_ai_educacionit.pdf" target="_blank">
-                View Certificate
-            </a>
+                <p>EducaciónIT</p>
+
+                <a href="Certificates/oop_ai_educacionit.jpeg" target="_blank">
+                    View Certificate
+                </a>
+
+            </div>
 
         </div>
 
         <!-- SQL -->
         <div class="cert-item">
 
-            <img src="Certificates/javascript.jpg">
+            <img src="Certificates/sql_intro_educacionit.jpeg">
 
-            <h3>SQL & Databases</h3>
+            <div class="cert-content">
 
-            <p>EducaciónIT</p>
+                <h3>SQL & Databases</h3>
 
-            <a href="Certificates/sql_intro_educacionit.pdf" target="_blank">
-                View Certificate
-            </a>
+                <p>EducaciónIT</p>
+
+                <a href="Certificates/sql_intro_educacionit.jpeg" target="_blank">
+                    View Certificate
+                </a>
+
+            </div>
 
         </div>
 
