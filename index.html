@@ -192,30 +192,44 @@
     padding:0 20px;
 }
 
+.stats-section{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+    max-width:1200px;
+    margin:0 auto 35px;
+    padding:0 20px;
+}
+
 .stat-card{
     background:#1e293b;
     border:1px solid #334155;
-    border-radius:16px;
-    padding:30px;
-    text-align:center;
+    border-radius:18px;
+    padding:35px 30px;
     transition:0.3s;
+    min-height:220px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
 }
 
 .stat-card:hover{
-    transform:translateY(-5px);
+    transform:translateY(-6px);
     border-color:#38bdf8;
-    box-shadow:0 0 20px rgba(56,189,248,0.2);
+    box-shadow:0 0 25px rgba(56,189,248,0.18);
 }
 
 .stat-card h3{
-    font-size:42px;
-    margin:0;
+    font-size:30px;
+    margin-bottom:18px;
     color:#38bdf8;
+    line-height:1.2;
 }
 
 .stat-card p{
-    margin-top:10px;
     color:#cbd5e1;
+    line-height:1.7;
+    font-size:15px;
 }
     </style> 
     
@@ -259,29 +273,45 @@ to improve testing coverage and validation efficiency.
         </div>
     </header>
 <div class="stats-section">
+<div class="stats-section">
 
     <div class="stat-card">
-        <h3>80+</h3>
-        <p>Bugs Reported</p>
+        <h3>Full-Cycle QA</h3>
+        <p>
+            Experience across development,
+            testing, maintenance,
+            and release validation workflows.
+        </p>
     </div>
 
     <div class="stat-card">
-        <h3>150+</h3>
-        <p>Test Cases Managed</p>
+        <h3>Live Operations</h3>
+        <p>
+            Production support, live issue validation,
+            regression coverage,
+            and maintenance testing.
+        </p>
     </div>
 
     <div class="stat-card">
-        <h3>20+</h3>
-        <p>Builds Tested</p>
+        <h3>Software & Game QA</h3>
+        <p>
+            Manual testing, exploratory testing,
+            functional validation,
+            and gameplay QA experience.
+        </p>
     </div>
 
     <div class="stat-card">
-        <h3>4+</h3>
-        <p>Live / Released Titles</p>
+        <h3>Technical Growth</h3>
+        <p>
+            Expanding into technical QA,
+            automation workflows,
+            scripting, and AI-assisted development.
+        </p>
     </div>
 
 </div>
-
     <section>
 <div class="tags">
 
