@@ -49,37 +49,18 @@ body::before{
 }
 
         header{
+            position:relative;
+            z-index:2;
+            background:
+            linear-gradient(
+            to bottom,
+    rgba(2,6,23,0.35),
+    rgba(2,6,23,0.75)
+);
+
+backdrop-filter:blur(3px);
          text-align:center;
          padding:110px 20px 90px;
-}
-
-       h1{
-    font-size:82px;
-    margin-bottom:15px;
-
-    font-weight:900;
-    letter-spacing:4px;
-
-    text-transform:uppercase;
-
-    background:linear-gradient(
-    90deg,
-    #ffffff,
-    #38bdf8,
-    #a855f7,
-    #ffffff
-    );
-
-    background-size:300%;
-
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-
-    animation:glowMove 8s linear infinite;
-
-    text-shadow:
-    0 0 15px rgba(56,189,248,0.35),
-    0 0 30px rgba(168,85,247,0.25);
 }
 
 @keyframes glowMove{
@@ -438,12 +419,22 @@ footer{
 }
 
 .hero-mini{
-    color:#38bdf8;
-    letter-spacing:4px;
+    color:#7dd3fc;
+
+    letter-spacing:6px;
+
     text-transform:uppercase;
-    font-size:13px;
-    margin-top:10px;
-    opacity:0.8;
+
+    font-size:12px;
+
+    margin-top:14px;
+
+    opacity:0.9;
+
+    text-shadow:
+    0 0 10px rgba(56,189,248,0.25);
+
+    margin-bottom:10px;
 }
 
 .buttons a::before{
@@ -534,6 +525,27 @@ footer{
     0 0 12px rgba(56,189,248,0.08),
     0 0 30px rgba(168,85,247,0.05);
 }
+body::after{
+    content:"";
+
+    position:fixed;
+    inset:0;
+
+    background:
+    radial-gradient(
+        circle at top,
+        rgba(168,85,247,0.12),
+        transparent 45%
+    ),
+    radial-gradient(
+        circle at bottom,
+        rgba(56,189,248,0.10),
+        transparent 40%
+    );
+
+    pointer-events:none;
+    z-index:-1;
+}
     </style> 
 
     
@@ -542,9 +554,9 @@ footer{
 
 <body>
 
-    <header>
+    <header class="hero">
         <h1>Jesús Capdevielle</h1>
-        <h3>🎮 Software & Game QA</h3>
+        <h3>🎮 Software QA • Game QA • Indie QA</h3>
 
         <p class="hero-mini">
         QA • Validation • Live Operations • Technical Growth
