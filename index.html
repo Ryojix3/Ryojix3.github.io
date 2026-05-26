@@ -9,7 +9,8 @@
         body{
             margin:0;
             font-family:Arial, Helvetica, sans-serif;
-            background:#0f172a;
+            background:
+radial-gradient(circle at top, #172554 0%, #0f172a 40%);
             color:white;
         }
 
@@ -28,12 +29,15 @@
             font-weight:normal;
         }
 
-        p{
-            max-width:700px;
-            margin:auto;
-            line-height:1.7;
-            color:#cbd5e1;
-        }
+p{
+    line-height:1.7;
+    color:#cbd5e1;
+}
+
+header p{
+    max-width:850px;
+    margin:auto;
+}
 
         .buttons{
             margin-top:30px;
@@ -176,20 +180,14 @@
 
 .tags span{
     display:inline-block;
-    background:#1e293b;
+    background:#0f172a;
+    border:1px solid #334155;
     color:#38bdf8;
-    padding:8px 12px;
-    border-radius:20px;
-    margin:5px;
+    padding:10px 16px;
+    border-radius:999px;
+    margin:8px;
     font-size:14px;
-}
-.stats-section{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
-    max-width:1200px;
-    margin:0 auto 50px;
-    padding:0 20px;
+    transition:0.3s;
 }
 
 .stats-section{
@@ -231,7 +229,51 @@
     line-height:1.7;
     font-size:15px;
 }
+
+.section-divider{
+    height:1px;
+    background:linear-gradient(to right, transparent, #334155, transparent);
+    margin:70px 0;
+}
+
+.hero-badges{
+    margin:25px 0;
+}
+
+.hero-badges span{
+    display:inline-block;
+    margin:6px;
+    padding:10px 16px;
+    border-radius:999px;
+    background:#1e293b;
+    border:1px solid #334155;
+    color:#38bdf8;
+    font-size:14px;
+}
+
+footer{
+    text-align:center;
+    padding:60px 20px;
+    color:#64748b;
+    font-size:14px;
+}
+
+.section-subtitle{
+    color:#94a3b8;
+    margin-top:-5px;
+    margin-bottom:30px;
+    line-height:1.6;
+}
+
+.project-status{
+    color:#38bdf8;
+    font-size:13px;
+    margin-bottom:12px;
+    font-weight:bold;
+}
     </style> 
+
+    
     
 </head>
 
@@ -239,9 +281,18 @@
 
     <header>
         <h1>Jesús Capdevielle</h1>
-        <h2>
-Software & Game QA Analyst
-</h2>
+        <h2> Software & Game QA Analyst</h2>
+        <div class="hero-badges">
+
+    <span>Software QA</span>
+    <span>Game QA</span>
+    <span>Live Operations</span>
+    <span>Manual Testing</span>
+    <span>Technical QA Growth</span>
+
+</div>
+
+
 
 <p>
 QA Analyst experienced in both Software QA and Game QA,
@@ -314,7 +365,13 @@ to improve testing coverage and validation efficiency.
     <section>
 <div class="card">
 
+    <div class="section-divider"></div>
     <h2>QA Areas</h2>
+
+    <p class="section-subtitle">
+    Core QA methodologies used across software validation,
+    live operations, and game production workflows.
+    </p>
 
     <div class="tags">
 
@@ -379,6 +436,7 @@ to improve testing coverage and validation efficiency.
 
         <div class="card">
 
+    <div class="section-divider"></div>
     <h2>Projects</h2>
 
     <div class="project-grid">
@@ -391,6 +449,7 @@ to improve testing coverage and validation efficiency.
             <div class="project-content">
 
                 <h3>Dreamcore</h3>
+                <p class="project-status">Released</p>
 
                 <p>
                     Point of Contact between QA and development team.
@@ -417,6 +476,7 @@ to improve testing coverage and validation efficiency.
             <div class="project-content">
 
                 <h3>Rebel Engine</h3>
+                <p class="project-status">Released</p>
 
                 <p>
                     Participated in full QA cycle from alpha to release.
@@ -441,7 +501,7 @@ to improve testing coverage and validation efficiency.
             <div class="project-content">
 
                 <h3>Soul Quest</h3>
-
+                <p class="project-status">Released</p>
                 <p>
                     Conducted bug hunting, edge case testing,
                     and gameplay validation across release builds.
@@ -465,6 +525,7 @@ to improve testing coverage and validation efficiency.
             <div class="project-content">
 
                 <h3>Don't Kill Rumble</h3>
+                <p class="project-status">In Development</p>
 
                 <p>
                     QA-to-dev Point of Contact during pre-production.
@@ -484,7 +545,7 @@ to improve testing coverage and validation efficiency.
     </div>
 
 </div>
-
+    <div class="section-divider"></div>
     <h2>Certificates</h2>
 
     <div class="cert-grid">
@@ -664,5 +725,14 @@ to improve testing coverage and validation efficiency.
 
 </div>
 
+<footer>
+
+    <p>
+        Built and designed by Jesús Capdevielle · QA Portfolio
+    </p>
+
+</footer>
+
 </body>
 </html>
+
