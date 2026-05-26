@@ -25,9 +25,9 @@ body{
 }
 
         header{
-            text-align:center;
-            padding:80px 20px;
-        }
+         text-align:center;
+         padding:110px 20px 90px;
+}
 
        h1{
     font-size:82px;
@@ -89,6 +89,8 @@ header p{
         }
 
 .buttons a{
+    position:relative;
+    overflow:hidden;
     text-decoration:none;
 
     background:rgba(15,23,42,0.8);
@@ -380,6 +382,48 @@ footer{
     margin-top:10px;
     opacity:0.8;
 }
+
+.buttons a::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.2),
+        transparent
+    );
+    transition:0.5s;
+}
+
+.buttons a:hover::before{
+    left:100%;
+}
+
+@media(max-width:768px){
+
+    h1{
+        font-size:52px;
+        letter-spacing:2px;
+    }
+
+    header p{
+        font-size:15px;
+    }
+
+    .project-grid{
+        grid-template-columns:1fr;
+    }
+
+    .cert-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
     </style> 
 
     
@@ -390,7 +434,11 @@ footer{
 
     <header>
         <h1>Jesús Capdevielle</h1>
-        <h2> Software & Game QA Analyst</h2>
+        <h3>🎮 Software & Game QA</h3>
+
+        <p class="hero-mini">
+        QA • Validation • Live Operations • Technical Growth
+        </p>
         <div class="hero-badges">
 
     <span>Software QA</span>
@@ -435,7 +483,7 @@ to improve testing coverage and validation efficiency.
 <div class="stats-section">
 
     <div class="stat-card">
-        <h3>Full-Cycle QA</h3>
+        <h3>🧪 Full-Cycle QA</h3>
         <p>
             Experience across development,
             testing, maintenance,
@@ -444,7 +492,7 @@ to improve testing coverage and validation efficiency.
     </div>
 
     <div class="stat-card">
-        <h3>Live Operations</h3>
+        <h3>🚀 Live Operations</h3>
         <p>
             Production support, live issue validation,
             regression coverage,
@@ -454,9 +502,6 @@ to improve testing coverage and validation efficiency.
 
     <div class="stat-card">
         <h3>Software & Game QA</h3>
-        <p class="hero-mini">
-    QA • Validation • Live Operations • Technical Growth
-</p>
         <p>
             Manual testing, exploratory testing,
             functional validation,
@@ -465,7 +510,7 @@ to improve testing coverage and validation efficiency.
     </div>
 
     <div class="stat-card">
-        <h3>Technical Growth</h3>
+        <h3>⚙️ Technical Growth</h3>
         <p>
             Expanding into technical QA,
             automation workflows,
