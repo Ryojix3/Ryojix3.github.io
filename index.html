@@ -18,8 +18,8 @@ body{
 
     background:
     linear-gradient(
-        rgba(2,6,23,0.60),
-        rgba(2,6,23,0.72)
+       rgba(2,6,23,0.35)
+       rgba(2,6,23,0.58)
     ),
     url("assets/cyberpunk-bg.png");
 
@@ -31,6 +31,8 @@ body{
     image-rendering:auto;
 
     overflow-x:hidden;
+
+    background-blend-mode:screen;
 }
 body::before{
     content:"";
@@ -155,7 +157,7 @@ header p{
         }
 
 .card{
-    margin-bottom:30px;
+    margin-bottom:45px;
     background:rgba(15,23,42,0.75);
     backdrop-filter:blur(8px);
 
@@ -193,7 +195,9 @@ header p{
 }
 
 .cert-item:hover{
-    transform:translateY(-6px);
+    transform:
+    translateY(-8px)
+    scale(1.015);
     border-color:#38bdf8;
     box-shadow:0 0 20px rgba(56,189,248,0.25);
 }
@@ -299,13 +303,20 @@ header p{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
     gap:25px;
+
     max-width:1200px;
-    margin:0 auto 35px;
-    padding:0 20px;
+
+    margin:-20px auto 60px;
+
+    padding:20px;
+
+    position:relative;
+    z-index:5;
 }
 
 .stat-card{
-    background:#1e293b;
+    background:rgba(15,23,42,0.72);
+    backdrop-filter:blur(10px);
     border:1px solid #334155;
     border-radius:18px;
     padding:35px 30px;
@@ -314,6 +325,8 @@ header p{
     display:flex;
     flex-direction:column;
     justify-content:center;
+
+    overflow:visible;
 }
 
 .stat-card:hover{
@@ -530,7 +543,11 @@ footer{
 .project-item,
 .cert-item{
     backdrop-filter:blur(10px);
-    background:rgba(10,15,35,0.72);
+    background:linear-gradient(
+    145deg,
+    rgba(15,23,42,0.88),
+    rgba(10,15,35,0.72)
+);
     border:1px solid rgba(56,189,248,0.18);
 
     box-shadow:
@@ -548,6 +565,11 @@ body::after{
         circle at top,
         rgba(168,85,247,0.12),
         transparent 45%
+    ),
+    radial-gradient(
+    circle at center,
+    rgba(168,85,247,0.10),
+    transparent 50%
     ),
     radial-gradient(
         circle at bottom,
