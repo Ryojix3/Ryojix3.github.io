@@ -1,1065 +1,573 @@
 <!DOCTYPE html>
 <html lang="en">
-    
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jesús Capdevielle | Game QA Analyst</title>
+    <title>Jesús Capdevielle | QA Analyst — Software & Game QA</title>
+    <meta name="description" content="QA Analyst specialized in Software & Game QA. Manual testing, regression, live-ops QA, and AI-assisted QA tooling.">
 
-    <style>
-        html{
-    scroll-behavior:smooth;
-}
-body{
-    margin:0;
-    font-family:'Orbitron',sans-serif;
-    color:white;
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-    background:
-    linear-gradient(
-        rgba(2,6,23,0.82),
-        rgba(2,6,23,0.92)
-    ),
-    url("./assets/cyberpunk-bg.png");
-
-    background-size:cover;
-    background-position:center;
-    background-attachment:fixed;
-    background-repeat:no-repeat;
-    image-rendering:auto;
-
-    overflow-x:hidden;
-    Background-blend-mode:screen;
-}
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-
-    background:
-    repeating-linear-gradient(
-        to bottom,
-        rgba(255,255,255,0.015),
-        rgba(255,255,255,0.015) 1px,
-        transparent 1px,
-        transparent 3px
-    );
-
-    pointer-events:none;
-    z-index:-1;
-}
-
-        header{
-    position:relative;
-    z-index:2;
-
-background:
-linear-gradient(
-    to bottom,
-    rgba(2,6,23,0.15),
-    rgba(2,6,23,0.45)
-);
-
-    backdrop-filter:blur(3px);
-
-    text-align:center;
-
-    padding:140px 20px 120px;
-
-    border-bottom:1px solid rgba(56,189,248,0.12);
-
-    box-shadow:
-    0 0 50px rgba(56,189,248,0.08);
-}
-
-@keyframes glowMove{
-    0%{
-        background-position:0%;
-    }
-
-    100%{
-        background-position:300%;
-    }
-}
-
-        h2{
-            color:#38bdf8;
-            font-weight:normal;
-        }
-        h3{
-    color:#38bdf8;
-    font-weight:700;
-    font-size:28px;
-    margin-top:10px;
-    margin-bottom:10px;
-}
-
-p{
-    line-height:1.7;
-    color:#cbd5e1;
-}
-
-header p{
-    max-width:780px;
-    margin:auto;
-    font-size:17px;
-}
-
-        .buttons{
-            margin-top:30px;
-        }
-
-.buttons a{
-    position:relative;
-    overflow:hidden;
-    text-decoration:none;
-
-    background:rgba(15,23,42,0.8);
-
-    color:#38bdf8;
-
-    padding:14px 28px;
-
-    margin:10px;
-
-    border-radius:12px;
-
-    font-weight:bold;
-
-    display:inline-block;
-
-    border:1px solid rgba(56,189,248,0.35);
-
-    box-shadow:
-    0 0 15px rgba(56,189,248,0.12);
-
-    transition:0.3s;
-}
-.buttons a:hover{
-    transform:translateY(-3px);
-
-    background:#38bdf8;
-
-    color:#020617;
-
-    box-shadow:
-    0 0 15px #38bdf8,
-    0 0 30px rgba(56,189,248,0.45);
-}
-
-        section{
-        padding:35px 20px 60px;
-            max-width:1200px;
-            margin:auto;
-        }
-
-.card{
-    margin-bottom:45px;
-    background:rgba(15,23,42,0.75);
-    backdrop-filter:blur(8px);
-
-    padding:35px;
-
-    border-radius:18px;
-
-    border:1px solid rgba(56,189,248,0.15);
-
-    box-shadow:
-    0 0 0 rgba(0,0,0,0),
-    0 0 20px rgba(56,189,248,0.06);
-
-    transition:0.3s;
-}
-
-        ul{
-            line-height:2;
-        }
-        .cert-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-    gap:25px;
-    margin-top:20px;
-}
-
-.cert-item{
-    background:#0f172a;
-    border-radius:16px;
-    overflow:hidden;
-    border:1px solid #334155;
-    transition:0.3s;
-    display:flex;
-    flex-direction:column;
-}
-
-.cert-item:hover{
-    transform:
-    translateY(-8px)
-    scale(1.015);
-    border-color:#38bdf8;
-    box-shadow:0 0 20px rgba(56,189,248,0.25);
-}
-
-.cert-item img{
-    width:100%;
-    height:260px;
-    object-fit:cover;
-    background:#111827;
-}
-
-.cert-content{
-    padding:20px;
-    display:flex;
-    flex-direction:column;
-    flex-grow:1;
-}
-
-.cert-content h3{
-    margin:0;
-    margin-bottom:10px;
-}
-
-.cert-content p{
-    color:#94a3b8;
-    margin-bottom:20px;
-}
-
-.cert-content a{
-    margin-top:auto;
-    text-align:center;
-    padding:12px;
-    background:linear-gradient(135deg,#38bdf8,#0ea5e9);
-    color:white;
-    text-decoration:none;
-    border-radius:10px;
-    font-weight:bold;
-    transition:0.3s;
-}
-
-.cert-content a:hover{
-    background:white;
-    color:black;
-}
-
-.project-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
-    gap:25px;
-    margin-top:20px;
-}
-
-.project-item{
-    background:#0f172a;
-    border-radius:16px;
-    overflow:hidden;
-    border:1px solid #334155;
-    transition:0.3s;
-}
-
-.project-item:hover{
-    transform:translateY(-6px);
-    border-color:#38bdf8;
-    box-shadow:0 0 20px rgba(56,189,248,0.25);
-}
-
-.project-item img{
-    width:100%;
-    height:220px;
-    object-fit:cover;
-}
-
-.project-content{
-    padding:20px;
-}
-
-.project-content h3{
-    margin-top:0;
-}
-
-.project-content p{
-    color:#cbd5e1;
-    line-height:1.6;
-}
-
-.tags{
-    margin-top:20px;
-}
-
-.tags span{
-    display:inline-block;
-    background:#0f172a;
-    border:1px solid #334155;
-    color:#38bdf8;
-    padding:10px 16px;
-    border-radius:999px;
-    margin:8px;
-    font-size:14px;
-    transition:0.3s;
-}
-
-.stats-section{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:25px;
-
-    max-width:1200px;
-
-    margin:-20px auto 60px;
-
-    padding:20px;
-
-    position:relative;
-    z-index:5;
-}
-
-.stat-card{
-    background:rgba(15,23,42,0.72);
-    backdrop-filter:blur(10px);
-    border:1px solid #334155;
-    border-radius:18px;
-    padding:35px 30px;
-    transition:0.3s;
-    min-height:220px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-
-    overflow:visible;
-}
-
-.stat-card:hover{
-    transform:translateY(-6px);
-    border-color:#38bdf8;
-    box-shadow:0 0 25px rgba(56,189,248,0.18);
-}
-
-.stat-card h3{
-    font-size:30px;
-    margin-bottom:18px;
-    color:#38bdf8;
-    line-height:1.2;
-}
-
-.stat-card p{
-    color:#cbd5e1;
-    line-height:1.7;
-    font-size:15px;
-}
-
-.section-divider{
-    height:1px;
-    background:linear-gradient(to right, transparent, #334155, transparent);
-    margin:25px 0 35px 0;
-}
-
-.card{
-    border-radius:22px;
-}
-
-.hero{
-    position:relative;
-    z-index:2;
-}
-
-.hero-badges{
-    margin:25px 0;
-}
-
-.hero h1{
-    font-size:96px;
-    font-weight:900;
-    margin-bottom:10px;
-    letter-spacing:4px;
-    text-transform:uppercase;
-    filter:drop-shadow(0 0 25px rgba(56,189,248,0.35));
-    
-
-    background:linear-gradient(
-        90deg,
-        #7dd3fc,
-        #38bdf8,
-        #c084fc,
-        #38bdf8,
-        #7dd3fc
-        
-    );
-
-    background-size:300% auto;
-
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-
-    animation:neonFlow 8s linear infinite;
-
-    text-shadow:
-    0 0 10px rgba(56,189,248,0.4),
-    0 0 20px rgba(168,85,247,0.35),
-    0 0 40px rgba(56,189,248,0.25);
-
-    position:relative;
-    z-index:2;
-}
-@keyframes neonFlow{
-    0%{
-        background-position:0% center;
-    }
-
-    100%{
-        background-position:300% center;
-    }
-}
-
-.hero-badges span{
-    display:inline-block;
-    margin:6px;
-    padding:10px 16px;
-    border-radius:999px;
-    background:#1e293b;
-    border:1px solid #334155;
-    color:#38bdf8;
-    font-size:14px;
-}
-
-footer{
-    text-align:center;
-    padding:60px 20px;
-    color:#64748b;
-    font-size:14px;
-}
-
-.section-subtitle{
-    color:#94a3b8;
-    margin-top:-5px;
-    margin-bottom:30px;
-    line-height:1.6;
-}
-
-.project-status{
-    color:#38bdf8;
-    font-size:13px;
-    margin-bottom:12px;
-    font-weight:bold;
-}
-
-.card:hover{
-    transform:translateY(-6px);
-
-    border-color:#38bdf8;
-
-    box-shadow:
-    0 0 15px rgba(56,189,248,0.15),
-    0 0 35px rgba(168,85,247,0.22)
-}
-
-.tags span:hover{
-    border-color:#38bdf8;
-
-    transform:translateY(-2px);
-
-    box-shadow:
-    0 0 10px rgba(56,189,248,0.25);
-}
-
-.hero-mini{
-    color:#7dd3fc;
-
-    letter-spacing:6px;
-
-    text-transform:uppercase;
-
-    font-size:12px;
-
-    margin-top:14px;
-
-    opacity:0.9;
-
-    text-shadow:
-    0 0 10px rgba(56,189,248,0.25);
-
-    margin-bottom:10px;
-}
-
-.buttons a::before{
-    content:"";
-    position:absolute;
-    top:0;
-    left:-100%;
-    width:100%;
-    height:100%;
-    background:linear-gradient(
-        90deg,
-        transparent,
-        rgba(255,255,255,0.2),
-        transparent
-    );
-    transition:0.5s;
-}
-
-.buttons a:hover::before{
-    left:100%;
-}
-
-@media(max-width:768px){
-
-    h1{
-        font-size:52px;
-        letter-spacing:2px;
-    }
-
-    header p{
-        font-size:15px;
-    }
-
-    .project-grid{
-        grid-template-columns:1fr;
-    }
-
-    .cert-grid{
-        grid-template-columns:1fr;
-    }
-
-}
-.hero-tags{
-    display:flex;
-    justify-content:center;
-    gap:12px;
-    flex-wrap:wrap;
-    margin-top:15px;
-    margin-bottom:25px;
-}
-
-.hero-tags span{
-    padding:10px 18px;
-
-    border:1px solid rgba(56,189,248,0.25);
-
-    background:rgba(17,24,39,0.7);
-
-    border-radius:999px;
-
-    color:#38bdf8;
-
-    font-size:13px;
-
-    letter-spacing:1px;
-
-    backdrop-filter:blur(8px);
-
-    transition:0.3s;
-}
-
-.hero-tags span:hover{
-    transform:translateY(-3px);
-
-    border-color:#38bdf8;
-
-    box-shadow:0 0 15px rgba(56,189,248,0.3);
-}
-
-.card,
-.project-item,
-.cert-item{
-    backdrop-filter:blur(10px);
-    background:linear-gradient(
-    145deg,
-    rgba(15,23,42,0.88),
-    rgba(10,15,35,0.72)
-);
-    border:1px solid rgba(56,189,248,0.18);
-
-    box-shadow:
-    0 0 12px rgba(56,189,248,0.08),
-    0 0 30px rgba(168,85,247,0.05);
-}
-body::after{
-    content:"";
-
-    position:fixed;
-    inset:0;
-
-    background:
-    radial-gradient(
-        circle at top,
-        rgba(168,85,247,0.12),
-        transparent 45%
-    ),
-    radial-gradient(
-    circle at center,
-    rgba(168,85,247,0.10),
-    transparent 50%
-    ),
-    radial-gradient(
-        circle at bottom,
-        rgba(56,189,248,0.16),
-        transparent 40%
-    );
-
-    pointer-events:none;
-    z-index:-1;
-}
-    </style> 
-
-    
-    
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
 
-    <header class="hero">
+    <!-- ================= NAVBAR ================= -->
+    <nav class="navbar">
+        <div class="nav-inner">
+            <a href="#home" class="nav-logo">
+                <span class="nav-logo-mark">JC</span>
+                <span class="nav-logo-text">Jesús <b>Capdevielle</b></span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#certificates">Certificates</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <a class="nav-cv" href="Jesus_Capdevielle_CV.pdf" download>CV ↓</a>
+                <button class="nav-burger" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+
+    <!-- ================= HERO ================= -->
+    <header class="hero" id="home">
+        <div class="hero-status">System status: available for QA roles</div>
+
         <h1>Jesús Capdevielle</h1>
-        <h3>🎮 Software QA • Game QA • Indie QA</h3>
-<div class="hero-tags">
+        <p class="hero-role">Software QA &amp; Game QA Analyst</p>
 
-<span>Software QA</span>
-<span>Game QA</span>
-<span>Indie Projects</span>
-<span>Automation & QA</span>
+        <div class="hero-tags">
+            <span>Manual Testing</span>
+            <span>Live-Ops QA</span>
+            <span>Game QA</span>
+            <span>QA Automation (growing)</span>
+        </div>
 
-</div>
+        <p class="lede">
+            I find what breaks before players or production do. Three years
+            in QA across indie game testing and software validation, including
+            the last 7 months in live-ops QA for casino &amp; video slot titles —
+            running regression cycles, writing test cases, and building lightweight
+            tools that make testing faster. Currently leveling up into automation
+            and AI-assisted QA workflows.
+        </p>
 
+        <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects">View Projects</a>
+            <a class="btn btn-ghost" href="#contact">Get in Touch</a>
+        </div>
 
-
-<p>
-QA Analyst experienced in both Software QA and Game QA,
-with hands-on experience in manual testing, exploratory testing,
-functional validation, regression testing, smoke testing,
-live issue verification, and release validation across
-live and in-development products.
-
-Skilled in black-box testing methodologies, defect reporting,
-QA documentation, cross-functional communication,
-Agile/Scrum workflows, and production support.
-Also familiar with technical and white-box oriented validation processes.
-
-Worked on casino and video bingo titles throughout full production cycles,
-live operations support, maintenance updates,
-and release coordination.
-
-Currently expanding into technical QA,
-automation workflows, scripting,
-and AI-assisted development practices
-to improve testing coverage and validation efficiency.
-</p>
-
-<div class="buttons">
-
-<a href="https://www.linkedin.com/in/jesus-capdevielle/" target="_blank">
-💼 LinkedIn
-</a>
-
-<a href="Jesus_Capdevielle_CV.pdf" download>
-📄 Download CV
-</a>
-
-</div>
+        <div class="scroll-cue">
+            <span>Scroll</span>
+            <span class="line"></span>
+        </div>
     </header>
-<div class="stats-section">
 
-    <div class="stat-card">
-        <h3>🧪 Full-Cycle QA</h3>
-        <p>
-            Experience across development,
-            testing, maintenance,
-            and release validation workflows.
-        </p>
-    </div>
-
-    <div class="stat-card">
-        <h3>🚀 Live Operations</h3>
-        <p>
-            Production support, live issue validation,
-            regression coverage,
-            and maintenance testing.
-        </p>
-    </div>
-
-    <div class="stat-card">
-        <h3>🎮 Software & Game QA</h3>
-        <p>
-            Manual testing, exploratory testing,
-            functional validation,
-            and gameplay QA experience.
-        </p>
-    </div>
-
-    <div class="stat-card">
-        <h3>⚙️ Technical Growth</h3>
-        <p>
-            Expanding into technical QA,
-            automation workflows,
-            scripting, and AI-assisted development.
-        </p>
-    </div>
-
-</div>
-    <section>
-<div class="card">
-    <h2>QA Areas</h2>
-
-    <p class="section-subtitle">
-    Core QA methodologies used across software validation,
-    live operations, and game production workflows.
-    </p>
-
-    <div class="tags">
-
-        <span>Manual Testing</span>
-        <span>Exploratory Testing</span>
-        <span>Functional Testing</span>
-        <span>Regression Testing</span>
-        <span>Smoke Testing</span>
-        <span>Black-box Testing</span>
-        <span>Live Ops QA</span>
-        <span>Release Validation</span>
-        <span>QA Documentation</span>
-        <span>Cross-functional QA</span>
-        <span>Agile/Scrum</span>
-
-    </div>
-
-</div>
-
-<div class="card">
-
-    <h2>Tools & Technologies</h2>
-
-    <div class="tags">
-
-        <span>Jira</span>
-        <span>Qase</span>
-        <span>TestRail</span>
-        <span>BrowserStack</span>
-        <span>Postman</span>
-        <span>Selenium</span>
-        <span>GitHub</span>
-        <span>VS Code</span>
-        <span>SQL</span>
-        <span>JavaScript</span>
-        <span>Java</span>
-        <span>Claude Code</span>
-        <span>AI Tools</span>
-
-    </div>
-
-</div>
-
-<div class="card">
-
-    <h2>Technical Growth</h2>
-
-    <div class="tags">
-
-        <span>Automation Fundamentals</span>
-        <span>Technical QA</span>
-        <span>AI-assisted QA</span>
-        <span>API Validation</span>
-        <span>SQL Validation</span>
-        <span>Scripting</span>
-        <span>Automation Workflows</span>
-        <span>Validation Tooling</span>
-
-    </div>
-
-</div>
-
-        <div class="card">
-
-    <h2>Projects</h2>
-
-    <div class="project-grid">
-
-        <!-- DREAMCORE -->
-        <div class="project-item">
-
-            <img src="Projects/dreamcore.jpg">
-
-            <div class="project-content">
-
-                <h3>Dreamcore</h3>
-                <p class="project-status">Released</p>
-
-                <p>
-                    Point of Contact between QA and development team.
-                    Managed regression cycles, defect prioritization,
-                    and release coordination.
-                </p>
-
-                <div class="tags">
-                    <span>POC</span>
-                    <span>Regression</span>
-                    <span>Taiga</span>
-                    <span>Agile</span>
-                </div>
-
+    <!-- ================= ABOUT ================= -->
+    <section id="about">
+        <div class="wrap">
+            <div class="reveal">
+                <p class="eyebrow">About</p>
+                <h2 class="section-title">Who I am</h2>
+                <p class="section-sub">A quick rundown of my QA background and what I'm building toward.</p>
             </div>
 
-        </div>
-
-        <!-- REBEL ENGINE -->
-        <div class="project-item">
-
-            <img src="Projects/rebel_engine.jpg">
-
-            <div class="project-content">
-
-                <h3>Rebel Engine</h3>
-                <p class="project-status">Released</p>
-
-                <p>
-                    Participated in full QA cycle from alpha to release.
-                    Reported gameplay and UI bugs across multiple builds.
-                </p>
-
-                <div class="tags">
-                    <span>Bug Reports</span>
-                    <span>Regression</span>
-                    <span>Smoke Testing</span>
+            <div class="about-grid">
+                <div class="about-text reveal">
+                    <p>
+                        I'm a <strong>QA Analyst</strong> working across <strong>Software QA</strong> and
+                        <strong>Game QA</strong>, with hands-on experience in manual testing, exploratory
+                        testing, functional validation, regression testing, and release coordination
+                        across both live and in-development products.
+                    </p>
+                    <p>
+                        Most of my three years in QA come from working directly with
+                        <strong>indie game development teams</strong> — acting as the QA point of
+                        contact from alpha through release, reporting bugs, and coordinating
+                        testing cycles. More recently, I've moved into <strong>live-ops QA for
+                        casino and video slot titles</strong>, validating builds across releases,
+                        catching regressions before they ship, and keeping test documentation
+                        current for fast-moving cycles.
+                    </p>
+                    <p>
+                        I'm currently expanding into <strong>automation, scripting, and AI-assisted QA
+                        tooling</strong> — including building my own internal tools — to push testing
+                        coverage and turnaround time further.
+                    </p>
                 </div>
 
-            </div>
-
-        </div>
-
-        <!-- SOUL QUEST -->
-        <div class="project-item">
-
-            <img src="Projects/soul_quest.jpg">
-
-            <div class="project-content">
-
-                <h3>Soul Quest</h3>
-                <p class="project-status">Released</p>
-                <p>
-                    Conducted bug hunting, edge case testing,
-                    and gameplay validation across release builds.
-                </p>
-
-                <div class="tags">
-                    <span>Gameplay QA</span>
-                    <span>Validation</span>
-                    <span>Testing</span>
+                <div class="stats-grid reveal reveal-stagger">
+                    <div class="stat-card" style="--i:0">
+                        <span class="stat-icon">🧪</span>
+                        <h4>Full-Cycle QA</h4>
+                        <p>Coverage across development, testing, maintenance, and release validation workflows.</p>
+                    </div>
+                    <div class="stat-card" style="--i:1">
+                        <span class="stat-icon">🚀</span>
+                        <h4>Live Operations</h4>
+                        <p>Production support, live issue verification, regression coverage, and maintenance testing.</p>
+                    </div>
+                    <div class="stat-card" style="--i:2">
+                        <span class="stat-icon">🎮</span>
+                        <h4>Software &amp; Game QA</h4>
+                        <p>Manual and exploratory testing, functional validation, and gameplay QA experience.</p>
+                    </div>
+                    <div class="stat-card" style="--i:3">
+                        <span class="stat-icon">⚙️</span>
+                        <h4>Technical Growth</h4>
+                        <p>Expanding into automation workflows, scripting, and AI-assisted QA tooling.</p>
+                    </div>
                 </div>
-
             </div>
-
         </div>
+    </section>
 
-        <!-- DON'T KILL RUMBLE -->
-        <div class="project-item">
-
-            <img src="Projects/dont_kill_rumble.jpg">
-
-            <div class="project-content">
-
-                <h3>Don't Kill Rumble</h3>
-                <p class="project-status">In Development</p>
-
-                <p>
-                    QA-to-dev Point of Contact during pre-production.
-                    Managed issue escalation and testing workflows.
-                </p>
-
-                <div class="tags">
-                    <span>POC</span>
-                    <span>Agile</span>
-                    <span>Communication</span>
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
     <div class="section-divider"></div>
-    <h2>Certificates</h2>
 
-    <div class="cert-grid">
-
-        <!-- IMAGE CAMPUS -->
-        <div class="cert-item">
-
-            <img src="Certificates/game_qa_imagecampus.jpg">
-
-            <div class="cert-content">
-
-                <h3>Game Quality Analyst</h3>
-
-                <p>Image Campus</p>
-
-                <a href="Certificates/game_qa_imagecampus.jpg" target="_blank">
-                    View Certificate
-                </a>
-
+    <!-- ================= SKILLS ================= -->
+    <section id="skills">
+        <div class="wrap">
+            <div class="reveal">
+                <p class="eyebrow">Skills</p>
+                <h2 class="section-title">QA Toolkit</h2>
+                <p class="section-sub">Methodologies, tools, and the technical track I'm building on top of manual QA.</p>
             </div>
 
+            <div class="skills-grid reveal reveal-stagger">
+                <div class="skill-card" style="--i:0">
+                    <div class="skill-card-head">
+                        <span class="icon">🧭</span>
+                        <h3>QA Methodologies</h3>
+                    </div>
+                    <p class="desc">Core testing approaches used across software validation, live operations, and game production.</p>
+                    <div class="tags">
+                        <span>Manual Testing</span>
+                        <span>Exploratory Testing</span>
+                        <span>Functional Testing</span>
+                        <span>Regression Testing</span>
+                        <span>Smoke Testing</span>
+                        <span>Black-box Testing</span>
+                        <span>Live-Ops QA</span>
+                        <span>Release Validation</span>
+                        <span>QA Documentation</span>
+                        <span>Agile / Scrum</span>
+                    </div>
+                </div>
+
+                <div class="skill-card" style="--i:1">
+                    <div class="skill-card-head">
+                        <span class="icon">🛠️</span>
+                        <h3>Tools &amp; Technologies</h3>
+                    </div>
+                    <p class="desc">Day-to-day stack for tracking, testing, and documenting QA work.</p>
+                    <div class="tags">
+                        <span>Jira</span>
+                        <span>Qase</span>
+                        <span>TestRail</span>
+                        <span>BrowserStack</span>
+                        <span>Postman</span>
+                        <span>Selenium</span>
+                        <span>GitHub</span>
+                        <span>VS Code</span>
+                        <span>SQL</span>
+                        <span>JavaScript</span>
+                        <span>Java</span>
+                    </div>
+                </div>
+
+                <div class="skill-card" style="--i:2">
+                    <div class="skill-card-head">
+                        <span class="icon">🤖</span>
+                        <h3>Technical Growth</h3>
+                    </div>
+                    <p class="desc">Where I'm pushing next: automation fundamentals and AI-assisted QA workflows.</p>
+                    <div class="tags">
+                        <span>Automation Fundamentals</span>
+                        <span>Technical QA</span>
+                        <span>AI-Assisted QA</span>
+                        <span>API Validation</span>
+                        <span>SQL Validation</span>
+                        <span>Scripting</span>
+                        <span>Claude Code</span>
+                        <span>AI Tooling</span>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <!-- QA MANUAL -->
-        <div class="cert-item">
+    <div class="section-divider"></div>
 
-            <img src="Certificates/qa_manual_coderhouse.jpg">
-
-            <div class="cert-content">
-
-                <h3>Testing QA Manual</h3>
-
-                <p>CoderHouse</p>
-
-                <a href="Certificates/qa_manual_coderhouse.jpg" target="_blank">
-                    View Certificate
-                </a>
-
+    <!-- ================= EXPERIENCE ================= -->
+    <section id="experience">
+        <div class="wrap">
+            <div class="reveal">
+                <p class="eyebrow">Experience</p>
+                <h2 class="section-title">Where I've worked</h2>
+                <p class="section-sub">Live-ops slot QA and indie game QA, side by side.</p>
             </div>
 
-        </div>
+            <div class="timeline reveal">
 
-        <!-- JAVASCRIPT -->
-        <div class="cert-item">
+                <div class="timeline-item current">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-head">
+                            <div>
+                                <div class="timeline-role">QA Tester</div>
+                                <div class="timeline-company">Linko Studios / Neko Games</div>
+                            </div>
+                            <div class="timeline-period">Current</div>
+                        </div>
+                        <span class="status-pill live">Active</span>
+                        <p>
+                            QA on casino and video slot titles across their full production
+                            cycle — from internal builds to live operations.
+                        </p>
+                        <ul>
+                            <li>Test changes across different builds to catch regressions before release.</li>
+                            <li>Report, track, and help prevent recurring issues before they reach production.</li>
+                            <li>Build and automate internal QA tools to speed up testing checklists.</li>
+                            <li>Create and maintain QA documentation, including test cases and process checklists, using internal tooling.</li>
+                        </ul>
+                        <div class="tags">
+                            <span>Slot &amp; Casino QA</span>
+                            <span>Regression Testing</span>
+                            <span>Live-Ops</span>
+                            <span>Internal Tooling</span>
+                            <span>QA Documentation</span>
+                        </div>
+                    </div>
+                </div>
 
-            <img src="Certificates/javascript.jpg">
-
-            <div class="cert-content">
-
-                <h3>JavaScript</h3>
-
-                <p>CoderHouse</p>
-
-                <a href="Certificates/javascript.jpg" target="_blank">
-                    View Certificate
-                </a>
-
-            </div>
-
-        </div>
-
-        <!-- EXCEL -->
-        <div class="cert-item">
-
-            <img src="Certificates/excel_advanced.jpg">
-
-            <div class="cert-content">
-
-                <h3>Excel Advanced</h3>
-
-                <p>CoderHouse</p>
-
-                <a href="Certificates/excel_advanced.jpg" target="_blank">
-                    View Certificate
-                </a>
-
-            </div>
-
-        </div>
-
-        <!-- QA EDUCACIONIT -->
-        <div class="cert-item">
-
-            <img src="Certificates/qa_manual_educacionit.jpeg">
-
-            <div class="cert-content">
-
-                <h3>Tester QA Manual</h3>
-
-                <p>EducaciónIT</p>
-
-                <a href="Certificates/qa_manual_educacionit.jpeg" target="_blank">
-                    View Certificate
-                </a>
-
-            </div>
-
-        </div>
-
-        <!-- TEST CASE DESIGN -->
-        <div class="cert-item">
-
-            <img src="Certificates/test_case_design_educacionit.jpeg">
-
-            <div class="cert-content">
-
-                <h3>Test Case Design</h3>
-
-                <p>EducaciónIT</p>
-
-                <a href="Certificates/test_case_design_educacionit.jpeg" target="_blank">
-                    View Certificate
-                </a>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-head">
+                            <div>
+                                <div class="timeline-role">QA Point of Contact</div>
+                                <div class="timeline-company">Indie Game Studios</div>
+                            </div>
+                            <div class="timeline-period">Ongoing / Project-based</div>
+                        </div>
+                        <span class="status-pill dev">Multiple Projects</span>
+                        <p>
+                            Acted as the bridge between QA and development teams on indie titles
+                            including <em>Dreamcore</em>, <em>Rebel Engine</em>, <em>Soul Quest</em>,
+                            and <em>Don't Kill Rumble</em> — see the Projects section below for details.
+                        </p>
+                        <div class="tags">
+                            <span>Bug Reporting</span>
+                            <span>Gameplay QA</span>
+                            <span>Smoke Testing</span>
+                            <span>Release Coordination</span>
+                        </div>
+                    </div>
+                </div>
 
             </div>
-
         </div>
+    </section>
 
-        <!-- JAVA -->
-        <div class="cert-item">
+    <div class="section-divider"></div>
 
-            <img src="Certificates/java_intro_educacionit.jpeg">
-
-            <div class="cert-content">
-
-                <h3>Introduction to Java</h3>
-
-                <p>EducaciónIT</p>
-
-                <a href="Certificates/java_intro_educacionit.jpeg" target="_blank">
-                    View Certificate
-                </a>
-
+    <!-- ================= PROJECTS ================= -->
+    <section id="projects">
+        <div class="wrap">
+            <div class="reveal">
+                <p class="eyebrow">Projects</p>
+                <h2 class="section-title">What I've worked on</h2>
+                <p class="section-sub">From an AI-powered QA tool I built myself, to indie titles tested end to end.</p>
             </div>
 
-        </div>
-
-        <!-- OOP -->
-        <div class="cert-item">
-
-            <img src="Certificates/oop_ai_educacionit.jpeg">
-
-            <div class="cert-content">
-
-                <h3>OOP with AI</h3>
-
-                <p>EducaciónIT</p>
-
-                <a href="Certificates/oop_ai_educacionit.jpeg" target="_blank">
-                    View Certificate
-                </a>
-
+            <div class="filter-bar reveal">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="ai">AI Tools</button>
+                <button class="filter-btn" data-filter="qa">Game QA</button>
+                <button class="filter-btn" data-filter="dev">In Development</button>
             </div>
 
-        </div>
+            <div class="project-grid reveal">
 
-        <!-- SQL -->
-        <div class="cert-item">
+                <!-- AI QA STUDIO — featured -->
+                <div class="project-item featured" data-category="ai">
+                    <div class="project-media">
+                        <span class="badge-type">AI Tool · Own Project</span>
+                        <img src="assets/img/ai-qa-studio.svg" alt="QA Studio app preview" loading="lazy">
+                    </div>
+                    <div class="project-content">
+                        <h3>QA Studio</h3>
+                        <p>
+                            An AI-powered tool I designed and built for Game QA: it turns written
+                            context, evidence, and findings into structured bug reports, test
+                            scenarios, test cases, and story reviews — cutting down the time spent
+                            formatting QA documentation.
+                        </p>
+                        <div class="tags">
+                            <span>AI-Assisted QA</span>
+                            <span>Bug Reports</span>
+                            <span>Test Case Generation</span>
+                            <span>Personal Project</span>
+                        </div>
+                        <a class="project-link" href="https://ia-qa-studiol.vercel.app/" target="_blank" rel="noopener">Open Live App ↗</a>
+                    </div>
+                </div>
 
-            <img src="Certificates/sql_intro_educacionit.jpeg">
+                <!-- DREAMCORE -->
+                <div class="project-item" data-category="qa">
+                    <div class="project-media">
+                        <span class="badge-type">Game QA</span>
+                        <img src="assets/projects/dreamcore.jpg" alt="Dreamcore game preview" loading="lazy">
+                    </div>
+                    <div class="project-content">
+                        <h3>Dreamcore</h3>
+                        <span class="status-pill live">Released</span>
+                        <p>
+                            QA point of contact between the QA and development teams. Managed
+                            regression cycles, defect prioritization, and release coordination.
+                        </p>
+                        <div class="tags">
+                            <span>POC</span>
+                            <span>Regression</span>
+                            <span>Taiga</span>
+                            <span>Agile</span>
+                        </div>
+                    </div>
+                </div>
 
-            <div class="cert-content">
+                <!-- REBEL ENGINE -->
+                <div class="project-item" data-category="qa">
+                    <div class="project-media">
+                        <span class="badge-type">Game QA</span>
+                        <img src="assets/projects/rebel_engine.jpg" alt="Rebel Engine game preview" loading="lazy">
+                    </div>
+                    <div class="project-content">
+                        <h3>Rebel Engine</h3>
+                        <span class="status-pill live">Released</span>
+                        <p>
+                            Full QA cycle from alpha to release. Reported gameplay and UI bugs
+                            across multiple builds.
+                        </p>
+                        <div class="tags">
+                            <span>Bug Reports</span>
+                            <span>Regression</span>
+                            <span>Smoke Testing</span>
+                        </div>
+                    </div>
+                </div>
 
-                <h3>SQL & Databases</h3>
+                <!-- SOUL QUEST -->
+                <div class="project-item" data-category="qa">
+                    <div class="project-media">
+                        <span class="badge-type">Game QA</span>
+                        <img src="assets/projects/soul_quest.jpg" alt="Soul Quest game preview" loading="lazy">
+                    </div>
+                    <div class="project-content">
+                        <h3>Soul Quest</h3>
+                        <span class="status-pill live">Released</span>
+                        <p>
+                            Bug hunting, edge-case testing, and gameplay validation across
+                            release builds.
+                        </p>
+                        <div class="tags">
+                            <span>Gameplay QA</span>
+                            <span>Validation</span>
+                            <span>Testing</span>
+                        </div>
+                    </div>
+                </div>
 
-                <p>EducaciónIT</p>
-
-                <a href="Certificates/sql_intro_educacionit.jpeg" target="_blank">
-                    View Certificate
-                </a>
+                <!-- DON'T KILL RUMBLE -->
+                <div class="project-item" data-category="qa dev">
+                    <div class="project-media">
+                        <span class="badge-type">Game QA</span>
+                        <img src="assets/projects/dont_kill_rumble.jpg" alt="Don't Kill Rumble game preview" loading="lazy">
+                    </div>
+                    <div class="project-content">
+                        <h3>Don't Kill Rumble</h3>
+                        <span class="status-pill dev">In Development</span>
+                        <p>
+                            QA-to-dev point of contact during pre-production. Managing issue
+                            escalation and testing workflows.
+                        </p>
+                        <div class="tags">
+                            <span>POC</span>
+                            <span>Agile</span>
+                            <span>Communication</span>
+                        </div>
+                    </div>
+                </div>
 
             </div>
-
         </div>
+    </section>
 
-    </div>
+    <div class="section-divider"></div>
 
-</div>
+    <!-- ================= CERTIFICATES ================= -->
+    <section id="certificates">
+        <div class="wrap">
+            <div class="reveal">
+                <p class="eyebrow">Certificates</p>
+                <h2 class="section-title">Courses &amp; Certifications</h2>
+                <p class="section-sub">Formal training backing up the hands-on QA experience.</p>
+            </div>
 
-<footer>
+            <div class="cert-grid reveal">
 
-    <p>
-        Built and designed by Jesús Capdevielle · QA Portfolio
-    </p>
+                <div class="cert-item">
+                    <img src="assets/certificates/game_qa_imagecampus.jpg" alt="Game Quality Analyst certificate" loading="lazy">
+                    <div class="cert-content">
+                        <h3>Game Quality Analyst</h3>
+                        <p>Image Campus</p>
+                        <a href="assets/certificates/game_qa_imagecampus.jpg" target="_blank" rel="noopener">View Certificate</a>
+                    </div>
+                </div>
 
-</footer>
+                <div class="cert-item">
+                    <img src="assets/certificates/qa_manual_coderhouse.jpg" alt="Manual QA Testing certificate" loading="lazy">
+                    <div class="cert-content">
+                        <h3>Testing QA Manual</h3>
+                        <p>CoderHouse</p>
+                        <a href="assets/certificates/qa_manual_coderhouse.jpg" target="_blank" rel="noopener">View Certificate</a>
+                    </div>
+                </div>
 
+                <div class="cert-item">
+                    <img src="assets/certificates/javascript.jpg" alt="JavaScript certificate" loading="lazy">
+                    <div class="cert-content">
+                        <h3>JavaScript</h3>
+                        <p>CoderHouse</p>
+                        <a href="assets/certificates/javascript.jpg" target="_blank" rel="noopener">View Certificate</a>
+                    </div>
+                </div>
+
+                <div class="cert-item">
+                    <img src="assets/certificates/excel_advanced.jpg" alt="Excel Advanced certificate" loading="lazy">
+                    <div class="cert-content">
+                        <h3>Excel Advanced</h3>
+                        <p>CoderHouse</p>
+                        <a href="assets/certificates/excel_advanced.jpg" target="_blank" rel="noopener">View Certificate</a>
+                    </div>
+                </div>
+
+                <div class="cert-item">
+                    <img src="assets/certificates/qa_manual_educacionit.jpeg" alt="Manual QA Tester certificate" loading="lazy">
+                    <div class="cert-content">
+                        <h3>Tester QA Manual</h3>
+                        <p>EducaciónIT</p>
+                        <a href="assets/certificates/qa_manual_educacionit.jpeg" target="_blank" rel="noopener">View Certificate</a>
+                    </div>
+                </div>
+
+                <div class="cert-item">
+                    <img src="assets/certificates/test_case_design_educacionit.jpeg" alt="Test Case Design certificate" loading="lazy">
+                    <div class="cert-content">
+                        <h3>Test Case Design</h3>
+                        <p>EducaciónIT</p>
+                        <a href="assets/certificates/test_case_design_educacionit.jpeg" target="_blank" rel="noopener">View Certificate</a>
+                    </div>
+                </div>
+
+                <div class="cert-item">
+                    <img src="assets/certificates/java_intro_educacionit.jpeg" alt="Introduction to Java certificate" loading="lazy">
+                    <div class="cert-content">
+                        <h3>Introduction to Java</h3>
+                        <p>EducaciónIT</p>
+                        <a href="assets/certificates/java_intro_educacionit.jpeg" target="_blank" rel="noopener">View Certificate</a>
+                    </div>
+                </div>
+
+                <div class="cert-item">
+                    <img src="assets/certificates/oop_ai_educacionit.jpeg" alt="OOP with AI certificate" loading="lazy">
+                    <div class="cert-content">
+                        <h3>OOP with AI</h3>
+                        <p>EducaciónIT</p>
+                        <a href="assets/certificates/oop_ai_educacionit.jpeg" target="_blank" rel="noopener">View Certificate</a>
+                    </div>
+                </div>
+
+                <div class="cert-item">
+                    <img src="assets/certificates/sql_intro_educacionit.jpeg" alt="SQL and Databases certificate" loading="lazy">
+                    <div class="cert-content">
+                        <h3>SQL &amp; Databases</h3>
+                        <p>EducaciónIT</p>
+                        <a href="assets/certificates/sql_intro_educacionit.jpeg" target="_blank" rel="noopener">View Certificate</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ================= CONTACT ================= -->
+    <section id="contact">
+        <div class="wrap">
+            <div class="reveal">
+                <p class="eyebrow">Contact</p>
+                <h2 class="section-title">Let's talk</h2>
+                <p class="section-sub">Open to QA roles and freelance QA work. The fastest way to reach me is email or LinkedIn.</p>
+            </div>
+
+            <div class="contact-grid reveal reveal-stagger">
+                <a class="contact-card" href="mailto:capdeviellejesus@gmail.com" style="--i:0" title="capdeviellejesus@gmail.com">
+                    <span class="icon">✉️</span>
+                    <span class="text">
+                        <span class="label">Email</span>
+                        <span class="value">capdeviellejesus@gmail.com</span>
+                    </span>
+                </a>
+
+                <a class="contact-card" href="https://www.linkedin.com/in/jesus-capdevielle/" target="_blank" rel="noopener" style="--i:1">
+                    <span class="icon">💼</span>
+                    <span class="text">
+                        <span class="label">LinkedIn</span>
+                        <span class="value">/in/jesus-capdevielle</span>
+                    </span>
+                </a>
+
+                <a class="contact-card" href="https://github.com/Ryojix3" target="_blank" rel="noopener" style="--i:2">
+                    <span class="icon">💻</span>
+                    <span class="text">
+                        <span class="label">GitHub</span>
+                        <span class="value">@Ryojix3</span>
+                    </span>
+                </a>
+
+                <a class="contact-card" href="Jesus_Capdevielle_CV.pdf" download style="--i:3">
+                    <span class="icon">📄</span>
+                    <span class="text">
+                        <span class="label">Resume</span>
+                        <span class="value">Download CV</span>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    </main>
+
+    <footer>
+        Built &amp; designed by <span class="foot-mark">Jesús Capdevielle</span> · QA Portfolio · 2026
+    </footer>
+
+    <button class="back-to-top" aria-label="Back to top">↑</button>
+
+    <script src="script.js"></script>
 </body>
 </html>
-
