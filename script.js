@@ -97,6 +97,67 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    /* ---------------------------------------------------------------- */
+    /* Glitch / cyberpunk atmosphere effects                             */
+    /* ---------------------------------------------------------------- */
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!reduceMotion) {
+
+        // Inject overlay layers
+        const scanBar = document.createElement('div');
+        scanBar.id = 'scan-bar';
+        document.body.appendChild(scanBar);
+
+        const crtFlicker = document.createElement('div');
+        crtFlicker.id = 'crt-flicker';
+        document.body.appendChild(crtFlicker);
+
+        const glitchFlash = document.createElement('div');
+        glitchFlash.id = 'glitch-flash';
+        document.body.appendChild(glitchFlash);
+
+        // Mark section titles as glitch targets
+        document.querySelectorAll('.section-title').forEach(el => el.classList.add('glitch-target'));
+
+        const glitchTargets = Array.from(document.querySelectorAll('.glitch-target'));
+
+        function isInViewport(el) {
+            const r = el.getBoundingClientRect();
+            return r.top < window.innerHeight && r.bottom > 0;
+        }
+
+        function randomGlitchPulse() {
+            const visible = glitchTargets.filter(isInViewport);
+            if (visible.length) {
+                const target = visible[Math.floor(Math.random() * visible.length)];
+                target.classList.add('glitching');
+                setTimeout(() => target.classList.remove('glitching'), 400);
+            }
+            scheduleNext();
+        }
+
+        function scheduleNext() {
+            const delay = 1500 + Math.random() * 2200;
+            setTimeout(randomGlitchPulse, delay);
+        }
+
+        scheduleNext();
+
+        // Occasional full-screen glitch burst
+        function screenBurst() {
+            glitchFlash.classList.remove('burst');
+            // restart animation
+            void glitchFlash.offsetWidth;
+            glitchFlash.classList.add('burst');
+            setTimeout(() => glitchFlash.classList.remove('burst'), 400);
+            setTimeout(screenBurst, 3800 + Math.random() * 5500);
+        }
+
+        setTimeout(screenBurst, 2200);
+    }
+
 });
 
 // ==========================================================================
@@ -113,6 +174,20 @@ document.addEventListener('DOMContentLoaded', () => {
     let w, h, nodes;
     const SPACING = 86;
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Occasional signal-interference jolt: brief horizontal tear + RGB-split lines
+    let joltUntil = 0;
+    let joltOffset = 0;
+
+    function scheduleJolt() {
+        const delay = 2200 + Math.random() * 3500;
+        setTimeout(() => {
+            joltUntil = performance.now() + 220;
+            joltOffset = (Math.random() < 0.5 ? -1 : 1) * (8 + Math.random() * 14);
+            scheduleJolt();
+        }, delay);
+    }
+    if (!reduceMotion) scheduleJolt();
 
     function resize() {
         w = canvas.width = window.innerWidth;
@@ -155,14 +230,36 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // horizontal + vertical faint connective lines
+        const jolting = performance.now() < joltUntil;
+        const jx = jolting ? joltOffset : 0;
+
         ctx.beginPath();
         for (const n of nodes) {
-            ctx.moveTo(n.x - 14, n.y);
-            ctx.lineTo(n.x + 14, n.y);
+            ctx.moveTo(n.x - 14 + jx, n.y);
+            ctx.lineTo(n.x + 14 + jx, n.y);
             ctx.moveTo(n.x, n.y - 14);
             ctx.lineTo(n.x, n.y + 14);
         }
         ctx.stroke();
+
+        if (jolting) {
+            // RGB-split echo of the horizontal lines for a glitch tear effect
+            ctx.beginPath();
+            ctx.strokeStyle = 'rgba(255,30,230,0.08)';
+            for (const n of nodes) {
+                ctx.moveTo(n.x - 14 - jx * 0.6, n.y);
+                ctx.lineTo(n.x + 14 - jx * 0.6, n.y);
+            }
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.strokeStyle = 'rgba(34,232,255,0.08)';
+            for (const n of nodes) {
+                ctx.moveTo(n.x - 14 + jx * 1.4, n.y);
+                ctx.lineTo(n.x + 14 + jx * 1.4, n.y);
+            }
+            ctx.stroke();
+        }
 
         // nodes
         for (const n of nodes) {

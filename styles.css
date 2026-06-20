@@ -66,11 +66,11 @@ body::before{
     content:"";
     position:fixed;
     inset:0;
-    z-index:-2;
+    z-index:998;
     background:repeating-linear-gradient(
         to bottom,
-        rgba(255,255,255,0.015),
-        rgba(255,255,255,0.015) 1px,
+        rgba(0,0,0,0.22),
+        rgba(0,0,0,0.22) 1px,
         transparent 1px,
         transparent 3px
     );
@@ -89,7 +89,196 @@ body::after{
     pointer-events:none;
 }
 
+/* Roaming scan-bar: a brighter horizontal band drifting down the screen */
+#scan-bar{
+    position:fixed;
+    left:0;
+    right:0;
+    height:140px;
+    top:-140px;
+    z-index:997;
+    pointer-events:none;
+    background:linear-gradient(
+        to bottom,
+        transparent,
+        rgba(56,189,248,0.035) 40%,
+        rgba(125,211,252,0.06) 50%,
+        rgba(56,189,248,0.035) 60%,
+        transparent
+    );
+    animation:scanDrift 9s linear infinite;
+}
+
+@keyframes scanDrift{
+    0%{top:-140px;}
+    100%{top:100vh;}
+}
+
+/* Vignette + CRT flicker */
+#crt-flicker{
+    position:fixed;
+    inset:0;
+    z-index:996;
+    pointer-events:none;
+    background:radial-gradient(ellipse at center, transparent 60%, rgba(0,0,0,0.35) 100%);
+    animation:crtFlicker 6.2s steps(1) infinite;
+}
+
+@keyframes crtFlicker{
+    0%, 89%, 100%{opacity:1;}
+    90%{opacity:0.88;}
+    91%{opacity:1;}
+    92%{opacity:0.78;}
+    93%{opacity:1;}
+    94%{opacity:0.9;}
+    95%{opacity:1;}
+}
+
+@media (prefers-reduced-motion: reduce){
+    #scan-bar, #crt-flicker{animation:none;}
+}
+
 /* -------------------------------------------------------------------- */
+/* Glitch effects (chromatic aberration + RGB split)                    */
+/* -------------------------------------------------------------------- */
+
+.glitch-target{
+    position:relative;
+}
+
+.glitch-target.glitching{
+    animation:glitchJitter 0.38s steps(3,end);
+}
+
+.glitch-target.glitching::before,
+.glitch-target.glitching::after{
+    content:"";
+    position:absolute;
+    inset:-4px;
+    pointer-events:none;
+    z-index:2;
+}
+
+.glitch-target.glitching::before{
+    background:rgba(255,20,235,0.5);
+    mix-blend-mode:difference;
+    transform:translate(6px,0);
+    clip-path:polygon(0 8%, 100% 8%, 100% 28%, 0 28%);
+    animation:glitchShiftR 0.38s steps(3,end);
+}
+
+.glitch-target.glitching::after{
+    background:rgba(20,235,255,0.5);
+    mix-blend-mode:difference;
+    transform:translate(-6px,0);
+    clip-path:polygon(0 52%, 100% 52%, 100% 74%, 0 74%);
+    animation:glitchShiftL 0.38s steps(3,end);
+}
+
+@keyframes glitchShiftR{
+    0%{transform:translate(6px,0); clip-path:polygon(0 8%, 100% 8%, 100% 28%, 0 28%);}
+    33%{transform:translate(-9px,2px); clip-path:polygon(0 60%, 100% 60%, 100% 82%, 0 82%);}
+    66%{transform:translate(7px,-1px); clip-path:polygon(0 20%, 100% 20%, 100% 46%, 0 46%);}
+    100%{transform:translate(0,0); clip-path:polygon(0 8%, 100% 8%, 100% 28%, 0 28%);}
+}
+
+@keyframes glitchShiftL{
+    0%{transform:translate(-6px,0); clip-path:polygon(0 52%, 100% 52%, 100% 74%, 0 74%);}
+    33%{transform:translate(9px,-2px); clip-path:polygon(0 5%, 100% 5%, 100% 30%, 0 30%);}
+    66%{transform:translate(-7px,1px); clip-path:polygon(0 64%, 100% 64%, 100% 88%, 0 88%);}
+    100%{transform:translate(0,0); clip-path:polygon(0 52%, 100% 52%, 100% 74%, 0 74%);}
+}
+
+@keyframes glitchJitter{
+    0%{transform:translate(0,0); filter:none;}
+    15%{transform:translate(-5px,2px) skewX(2deg);}
+    30%{transform:translate(4px,-2px) skewX(-1deg);}
+    45%{transform:translate(-6px,1px) skewX(1deg);}
+    60%{transform:translate(5px,0) skewX(-2deg);}
+    75%{transform:translate(-3px,-1px);}
+    90%{transform:translate(2px,1px);}
+    100%{transform:translate(0,0); filter:none;}
+}
+
+/* Full-screen glitch flash burst (triggered by JS at intervals) */
+#glitch-flash{
+    position:fixed;
+    inset:0;
+    z-index:999;
+    pointer-events:none;
+    opacity:0;
+    mix-blend-mode:screen;
+}
+
+#glitch-flash.burst{
+    opacity:1;
+    animation:glitchBurst 0.38s steps(4,end);
+}
+
+@keyframes glitchBurst{
+    0%{
+        opacity:0.85;
+        background:
+            linear-gradient(90deg, rgba(255,20,235,0.22) 0%, transparent 2%),
+            linear-gradient(90deg, transparent 40%, rgba(20,235,255,0.18) 42%, transparent 44%),
+            linear-gradient(90deg, transparent 70%, rgba(255,20,235,0.16) 72%, transparent 74%),
+            repeating-linear-gradient(to bottom, rgba(255,255,255,0.08) 0, transparent 2px, transparent 5px);
+        transform:translateX(0) scaleY(1);
+    }
+    25%{
+        opacity:0.7;
+        transform:translateX(-12px) scaleY(1.002);
+        background:
+            linear-gradient(90deg, rgba(20,235,255,0.22) 0%, transparent 3%),
+            linear-gradient(90deg, transparent 55%, rgba(255,20,235,0.2) 58%, transparent 61%),
+            repeating-linear-gradient(to bottom, rgba(255,255,255,0.1) 0, transparent 1px, transparent 4px);
+    }
+    50%{
+        opacity:0.6;
+        transform:translateX(10px);
+        background:
+            linear-gradient(90deg, rgba(255,20,235,0.18) 0%, transparent 4%),
+            linear-gradient(90deg, transparent 20%, rgba(20,235,255,0.18) 23%, transparent 26%);
+    }
+    75%{
+        opacity:0.35;
+        transform:translateX(-5px);
+    }
+    100%{
+        opacity:0;
+        transform:translateX(0);
+    }
+}
+
+/* Glitchy hover sweep for interactive elements */
+.btn, .filter-btn, .project-link, .nav-cv, .skill-card, .timeline-card, .project-item, .contact-card, .stat-card{
+    position:relative;
+}
+
+.btn::after, .filter-btn::after, .project-link::after, .nav-cv::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:inherit;
+    background:linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.35) 48%, rgba(34,232,255,0.25) 52%, transparent 70%);
+    opacity:0;
+    transform:translateX(-100%);
+    pointer-events:none;
+}
+
+.btn:hover::after, .filter-btn:hover::after, .project-link:hover::after, .nav-cv:hover::after{
+    opacity:1;
+    animation:sweepGlitch 0.5s ease forwards;
+}
+
+@keyframes sweepGlitch{
+    0%{transform:translateX(-100%);}
+    100%{transform:translateX(100%);}
+}
+
+/* -------------------------------------------------------------------- */
+
+
 /* Typography                                                           */
 /* -------------------------------------------------------------------- */
 
