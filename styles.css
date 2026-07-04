@@ -986,12 +986,7 @@ section.tight{padding-top:90px;}
 .project-item.hidden-filter{display:none;}
 
 .project-item.featured{
-    grid-column:span 2;
     flex-direction:column;
-}
-
-@media (max-width:860px){
-    .project-item.featured{grid-column:span 1;}
 }
 
 .project-item:hover{
